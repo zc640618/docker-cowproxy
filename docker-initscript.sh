@@ -88,6 +88,8 @@ blockedFile = /data/blocked
 directFile = /data/direct
 EOF
 
+cat $CONFIG_FILE
+
    /cow -rc=$CONFIG_FILE ${DEBUG_FLAG}
 else
     exec "$@"
