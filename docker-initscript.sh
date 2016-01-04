@@ -25,9 +25,8 @@ MYPORT=${MYPORT:-10000}
 
 CONFIG_FILE="/config.rc"
 
-if [ "$1" == "cow" ]
-then
-   cat > $CONFIG_FILE  <<EOF
+catplus(){
+    cat > $CONFIG_FILE  <<EOF
 listen = 0.0.0.0:7777
 logFile =/data/log
 alwaysProxy = ${ALWAYS_PROXY}
@@ -87,9 +86,17 @@ statFile = /data/stat
 blockedFile = /data/blocked
 directFile = /data/direct
 EOF
+}
 
-cat $CONFIG_FILE
-
+if [ "$1" == "cow" ]
+then
+    #catplus
+cat > $CONFIG_FILE  <<EOF
+listen = 0.0.0.0:7777
+alwaysProxy = ${ALWAYS_PROXY}
+addrInPAC = ${MYDOMAIN}:${MYPORT}
+EOF
+   cat $CONFIG_FILE
    /cow -rc=$CONFIG_FILE ${DEBUG_FLAG}
 else
     exec "$@"
