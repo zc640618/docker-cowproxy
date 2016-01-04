@@ -6,7 +6,7 @@ then
     set -x
     DEBUG_FLAG="-debug=true"
 fi
-PROXIES=${PARENT_PROXIES:-}
+PROXIES=${PROXIES:-}
 ALWAYS_PROXY=${ALWAYS_PROXY:-false}
 LOAD_BALANCE=${LOAD_BALANCE:-backup}
 ALLOWED_CLIENT=${ALLOWED_CLIENT:-}
@@ -90,19 +90,8 @@ EOF
 
 if [ "$1" == "cow" ]
 then
-    #catplus
-cat > $CONFIG_FILE  <<EOF
-listen = http://0.0.0.0:7777
-alwaysProxy = ${ALWAYS_PROXY}
-addrInPAC = ${MYDOMAIN}:${MYPORT}
-EOF
-
-    IFS=',' read -a proxies <<< "$PROXIES"
-    for proxy in "${proxies[@]}"
-    do
-       echo "Proxy = $proxy" >> $CONFIG_FILE
-    done
-
+    catplus
+    
     cat $CONFIG_FILE
     /cow -rc=$CONFIG_FILE ${DEBUG_FLAG}
 else
