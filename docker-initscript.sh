@@ -94,11 +94,17 @@ then
 cat > $CONFIG_FILE  <<EOF
 listen = http://0.0.0.0:7777
 alwaysProxy = ${ALWAYS_PROXY}
-proxy = $MYPROXY
 addrInPAC = ${MYDOMAIN}:${MYPORT}
 EOF
-   cat $CONFIG_FILE
-   /cow -rc=$CONFIG_FILE ${DEBUG_FLAG}
+
+    IFS=',' read -a proxies <<< "$PROXIES"
+    for proxy in "${proxies[@]}"
+    do
+       echo "Proxy = $proxy" >> $CONFIG_FILE
+    done
+
+    cat $CONFIG_FILE
+    /cow -rc=$CONFIG_FILE ${DEBUG_FLAG}
 else
     exec "$@"
 fi
