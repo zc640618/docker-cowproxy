@@ -94,6 +94,7 @@ then
 #cat > $CONFIG_FILE  <<EOF
 #listen = http://0.0.0.0:7777
 #alwaysProxy = ${ALWAYS_PROXY}
+#proxy = $MYPROXY
 #addrInPAC = ${MYDOMAIN}:${MYPORT}
 #EOF
    cat $CONFIG_FILE
