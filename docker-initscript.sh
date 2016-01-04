@@ -27,7 +27,7 @@ CONFIG_FILE="/config.rc"
 
 catplus(){
     cat > $CONFIG_FILE  <<EOF
-listen = 0.0.0.0:7777
+listen = http://0.0.0.0:7777
 logFile =/data/log
 alwaysProxy = ${ALWAYS_PROXY}
 loadBalance = ${LOAD_BALANCE}
@@ -92,7 +92,7 @@ if [ "$1" == "cow" ]
 then
     #catplus
 cat > $CONFIG_FILE  <<EOF
-listen = 0.0.0.0:7777
+listen = http://0.0.0.0:7777
 alwaysProxy = ${ALWAYS_PROXY}
 addrInPAC = ${MYDOMAIN}:${MYPORT}
 EOF
