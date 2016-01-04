@@ -90,12 +90,12 @@ EOF
 
 if [ "$1" == "cow" ]
 then
-    #catplus
-cat > $CONFIG_FILE  <<EOF
-listen = http://0.0.0.0:7777
-alwaysProxy = ${ALWAYS_PROXY}
-addrInPAC = ${MYDOMAIN}:${MYPORT}
-EOF
+    catplus
+#cat > $CONFIG_FILE  <<EOF
+#listen = http://0.0.0.0:7777
+#alwaysProxy = ${ALWAYS_PROXY}
+#addrInPAC = ${MYDOMAIN}:${MYPORT}
+#EOF
    cat $CONFIG_FILE
    /cow -rc=$CONFIG_FILE ${DEBUG_FLAG}
 else
