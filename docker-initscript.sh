@@ -91,8 +91,6 @@ EOF
 if [ "$1" == "cow" ]
 then
     catplus
-    
-    cat $CONFIG_FILE
     /cow -rc=$CONFIG_FILE ${DEBUG_FLAG}
 else
     exec "$@"
