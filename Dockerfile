@@ -1,12 +1,12 @@
 FROM debian:jessie
-MAINTAINER fzerorubigd <fzero@rubi.gd> @fzerorubigd
+MAINTAINER Stone <Stone@onlyos.com>
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
 		ssh \
         wget \
 	&& rm -rf /var/lib/apt/lists/*
 
-RUN wget http://dl.chenyufei.info/cow/latest/cow-linux64-0.9.6.gz -O /cow.gz
+RUN wget https://github.com/cyfdecyf/cow/releases/download/0.9.7/cow-linux64-0.9.7.gz -O /cow.gz
 RUN gunzip /cow.gz && chmod a+x /cow
 
 ADD docker-initscript.sh /sbin/docker-initscript.sh
